@@ -5,8 +5,8 @@ import '../css/hand.css'
 
 export default function Hand(props) {
 
-    const LEFT_SHIFT = 90,
-    CARD_WIDTH = 278
+    const LEFT_SHIFT = 90
+    const CARD_WIDTH = 278
     
     let nCards = props.cards.length
     let rotateRatio = 1
@@ -35,7 +35,7 @@ export default function Hand(props) {
             left: String(Math.floor(index*LEFT_SHIFT*rotateRatio)) + "px",
             rotate: `${centralizedRotation}deg`
         }
-        return (<Card key={index} suit={card.suit} value={card.value} style={styleCard} pickRandomCard={props.pickRandomCard} />)
+        return (<Card key={index} suit={card.suit} suit_visual={card.suit_visual} value={card.value} style={styleCard} pickRandomCard={props.pickRandomCard} />)
     })
 
     return (

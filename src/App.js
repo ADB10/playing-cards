@@ -1,6 +1,7 @@
 import React from 'react'
 
-import classicPlayingCards from './data/classicPlayingCards.js'
+import { GameMode } from './utils/constants.js';
+import DeckProvider from './utils/DeckProvider.js'
 import './App.css';
 import Hand from './components/Hand.js';
 import Deck from './components/Deck.js';
@@ -8,7 +9,7 @@ import Deck from './components/Deck.js';
 function App() {
 
   const [gameMaster, setGameMaster] = React.useState({
-    fullDeck: classicPlayingCards.sort((a, b) => 0.5 - Math.random()),
+    fullDeck: DeckProvider.buildDeck(GameMode.President),
     playerName: "host",
     hand: []
   })
