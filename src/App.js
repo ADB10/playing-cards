@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import React from 'react'
+
+import classicPlayingCards from './data/classicPlayingCards.js'
 import './App.css';
+import Hand from './components/Hand.js';
+import Deck from './components/Deck.js';
 
 function App() {
+
+  const [gameMaster, setGameMaster] = React.useState({
+    fullDeck: classicPlayingCards.sort((a, b) => 0.5 - Math.random()),
+    playerName: "host",
+    hand: []
+  })
+
+  function pickRandomCard(event) {
+    setGameMaster((lastGM) => {
+      let cardPicked = lastGM.fullDeck.pop()
+      return {
+        ...lastGM,
+        hand: [...lastGM.hand, cardPicked],
+        fullDeck: lastGM.fullDeck
+      }
+    })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav>
+        <p onClick={pickRandomCard}>Pick a card</p>
+        <p className="number-of-cards">{gameMaster.fullDeck.length} cards remaining</p>
+      </nav>
+      <Deck cards={gameMaster.fullDeck} />
+      <Hand cards={gameMaster.hand} pickRandomCard={pickRandomCard}/>
     </div>
   );
 }

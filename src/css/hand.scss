@@ -1,0 +1,11 @@
+.hand {
+    position: absolute;
+    width: max-content;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 250px;
+    bottom: 0;
+    .cards {
+        position: relative;
+    }
+}
