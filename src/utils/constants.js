@@ -1,4 +1,8 @@
 
+export const LEFT_SHIFT = 5;
+export const CARD_WIDTH = 278;
+export const CARD_HEIGHT = 356;
+
 export const CLASSIC_SUITS = {
     "hearts" : "♥",
     "diamonds" : "♦", 
